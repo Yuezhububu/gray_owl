@@ -46,7 +46,7 @@ class SimpleProduct implements SimpleProductInterface
 
   public function isInStock(): bool
   {
-    return ($this->stock > 0 ? True : False);
+    return $this->stock > 0;
   }
 
   public function getStock(): int

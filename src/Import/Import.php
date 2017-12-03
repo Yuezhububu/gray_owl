@@ -28,12 +28,8 @@ class Import implements ImportInterface
 
     private function addCSVProducts($handle): void
     {
-      $row = 1;
-      while (($data = fgetcsv($handle, $this->delimiter)) !== False) {
-        if ($row == 1) {
-          $row++;
-          continue;
-        }
+      fgetcsv($handle, $this->delimiter);
+      while (($data = fgetcsv($handle, $this->delimiter))) {
         $simpleProductAttribute = $this->getSimpleProductAttributes($data[2]);
         $simpleProduct = new SimpleProduct($data[0], $data[1], $simpleProductAttribute, floatval($data[3]), floatval($data[4]));
         $this->addProduct($simpleProduct);
